@@ -6,11 +6,12 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ variant = 'dark' }) => {
   const textColor = variant === 'dark' ? 'text-[#0057B8]' : 'text-white';
+  const baseUrl = import.meta.env.BASE_URL;
 
   return (
     <div className="flex items-center">
       <img 
-        src="/images/image.png" 
+        src={`${baseUrl}images/image.png`}
         alt="Siddhi Vinayak Logo" 
         className="h-16 w-auto object-contain mr-2"
         onError={(e) => {
