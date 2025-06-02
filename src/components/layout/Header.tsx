@@ -65,12 +65,12 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
-      }`}
+        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      } ${isScrolled ? 'py-2' : 'py-6'}`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="z-10">
+          <Link to="/" className="z-10 transition-transform duration-300">
             <Logo variant={isScrolled ? 'dark' : 'light'} />
           </Link>
 
