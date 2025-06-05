@@ -6,16 +6,17 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ variant = 'dark' }) => {
   const textColor = variant === 'dark' ? 'text-[#0057B8]' : 'text-white';
-  const baseUrl = import.meta.env.BASE_URL;
 
   return (
     <div className="flex items-center">
+      {/* Use a direct path without baseUrl for local development */}
       <img 
-        src={`${baseUrl}images/image.png`}
+        src="/images/image.png"
         alt="Siddhi Vinayak Logo" 
         className="h-16 w-auto object-contain mr-2"
         onError={(e) => {
           console.error('Logo failed to load:', e);
+          // Fallback for when image doesn't load
           e.currentTarget.style.display = 'none';
         }}
       />

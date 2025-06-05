@@ -175,7 +175,7 @@ const ProductPage: React.FC = () => {
   const content = productData[category ?? ''] || defaultContent;
 
   return (
-    <div className="pt-24">
+    <div className="pt-28"> {/* Increased padding-top */}
       <div className="container mx-auto px-4 py-12">
         <SectionHeader title={content.title} subtitle={content.description} />
 

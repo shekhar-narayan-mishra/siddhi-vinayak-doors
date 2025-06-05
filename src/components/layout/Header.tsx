@@ -13,6 +13,9 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
+    // Initialize isScrolled based on initial scroll position
+    setIsScrolled(window.scrollY > 50);
+
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsScrolled(true);
@@ -43,6 +46,7 @@ const Header: React.FC = () => {
       ],
     },
     { name: 'Contact Us', path: '/contact', dropdown: false },
+    { name: 'Gallery', path: '/gallery', dropdown: false },
   ];
 
   const WhatsAppIcon = () => (
@@ -62,16 +66,19 @@ const Header: React.FC = () => {
     { icon: <WhatsAppIcon />, href: "https://wa.me/919336509009", label: "WhatsApp" },
   ];
 
+  // Always use dark text colors since the background is white
+  const textColor = 'text-gray-800';
+  const hoverTextColor = 'hover:text-primary-600';
+  const activeTextColor = 'text-primary-600';
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md py-2"
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="z-10">
-            <Logo variant={isScrolled ? 'dark' : 'light'} />
+            <Logo variant="dark" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -80,19 +87,17 @@ const Header: React.FC = () => {
               <div key={index} className="relative group">
                 {item.dropdown ? (
                   <>
-                    <button className={`flex items-center font-medium group-hover:text-[#0057B8] transition-colors ${
-                      isScrolled ? 'text-[#0057B8]' : 'text-white'
-                    }`}>
+                    <button className={`flex items-center font-medium ${textColor} ${hoverTextColor} transition-colors`}>
                       {item.name}
-                      <ChevronDown className={`ml-1 w-4 h-4 ${isScrolled ? 'text-[#0057B8]' : 'text-white'}`} />
+                      <ChevronDown className={`ml-1 w-4 h-4 ${textColor}`} />
                     </button>
-                    <div className="absolute left-0 mt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                    <div className="absolute left-0 mt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 z-50">
                       <div className="bg-white rounded-md shadow-lg overflow-hidden">
                         {item.items?.map((subItem, subIndex) => (
                           <Link
                             key={subIndex}
                             to={subItem.path}
-                            className="block px-6 py-3 text-sm text-gray-700 hover:bg-[#0057B8]/10 hover:text-[#0057B8] transition-colors"
+                            className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                           >
                             {subItem.name}
                           </Link>
@@ -105,11 +110,9 @@ const Header: React.FC = () => {
                     to={item.path}
                     className={`font-medium transition-colors ${
                       location.pathname === item.path 
-                        ? 'text-[#0057B8]' 
-                        : isScrolled 
-                          ? 'text-[#0057B8] hover:text-[#0057B8]/80' 
-                          : 'text-white hover:text-white/80'
-                    }`}
+                        ? activeTextColor
+                        : textColor
+                    } ${hoverTextColor}`}
                   >
                     {item.name}
                   </Link>
@@ -125,11 +128,7 @@ const Header: React.FC = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`transition-colors ${
-                    isScrolled 
-                      ? 'text-[#0057B8] hover:text-[#0057B8]/80' 
-                      : 'text-white hover:text-white/80'
-                  }`}
+                  className={`transition-colors ${textColor} ${hoverTextColor}`}
                   aria-label={link.label}
                 >
                   {link.icon}
@@ -145,15 +144,15 @@ const Header: React.FC = () => {
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <X className={`w-6 h-6 ${isScrolled ? 'text-[#0057B8]' : 'text-white'}`} />
+              <X className={`w-6 h-6 ${textColor}`} />
             ) : (
-              <Menu className={`w-6 h-6 ${isScrolled ? 'text-[#0057B8]' : 'text-white'}`} />
+              <Menu className={`w-6 h-6 ${textColor}`} />
             )}
           </button>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - Higher z-index to appear above everything */}
           <div
-            className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out ${
+            className={`fixed inset-0 bg-white z-[100] transform transition-transform duration-300 ease-in-out ${
               isOpen ? 'translate-x-0' : 'translate-x-full'
             } lg:hidden`}
           >
