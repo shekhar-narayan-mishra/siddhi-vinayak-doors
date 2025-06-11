@@ -175,81 +175,79 @@ const ProductPage: React.FC = () => {
   const content = productData[category ?? ''] || defaultContent;
 
   return (
-    <div className="pt-28"> {/* Increased padding-top */}
-      <div className="container mx-auto px-4 py-12">
-        <SectionHeader title={content.title} subtitle={content.description} />
+    <div className="container mx-auto px-4 py-12"> {/* Removed extra padding-top */}
+      <SectionHeader title={content.title} subtitle={content.description} />
 
-        {/* Hero Image */}
-        <div className="rounded-lg overflow-hidden mb-12">
-          <img
-            src={content.mainImage}
-            alt={content.title}
-            className="w-full h-[400px] object-cover"
-          />
-        </div>
+      {/* Hero Image */}
+      <div className="rounded-lg overflow-hidden mb-12">
+        <img
+          src={content.mainImage}
+          alt={content.title}
+          className="w-full h-[400px] object-cover"
+        />
+      </div>
 
-        {/* Features and Benefits */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Features</h3>
-            <ul className="space-y-3">
-              {content.features.map((feature: string, index: number) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-primary-600 mr-2 mt-1">•</span>
-                  <span className="text-gray-700">{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Benefits</h3>
-            <ul className="space-y-3">
-              {content.benefits.map((benefit: string, index: number) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-primary-600 mr-2 mt-1">•</span>
-                  <span className="text-gray-700">{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Product Variants */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-800 mb-8">Product Variants</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {content.variants.map((variant: any, index: number) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="h-56 overflow-hidden">
-                  <img
-                    src={variant.image}
-                    alt={variant.name}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="text-xl font-bold text-gray-800 mb-2">{variant.name}</h4>
-                  <p className="text-gray-600">{variant.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Testimonials */}
+      {/* Features and Benefits */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
         <div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-8">Customer Testimonials</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {content.testimonials.map((testimonial: any, index: number) => (
-              <TestimonialCard
-                key={index}
-                quote={testimonial.quote}
-                author={testimonial.author}
-                location={testimonial.location}
-                rating={testimonial.rating}
-              />
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">Features</h3>
+          <ul className="space-y-3">
+            {content.features.map((feature: string, index: number) => (
+              <li key={index} className="flex items-start">
+                <span className="text-primary-600 mr-2 mt-1">•</span>
+                <span className="text-gray-700">{feature}</span>
+              </li>
             ))}
-          </div>
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">Benefits</h3>
+          <ul className="space-y-3">
+            {content.benefits.map((benefit: string, index: number) => (
+              <li key={index} className="flex items-start">
+                <span className="text-primary-600 mr-2 mt-1">•</span>
+                <span className="text-gray-700">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Product Variants */}
+      <div className="mb-16">
+        <h3 className="text-2xl font-bold text-gray-800 mb-8">Product Variants</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {content.variants.map((variant: any, index: number) => (
+            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="h-56 overflow-hidden">
+                <img
+                  src={variant.image}
+                  alt={variant.name}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-gray-800 mb-2">{variant.name}</h4>
+                <p className="text-gray-600">{variant.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div>
+        <h3 className="text-2xl font-bold text-gray-800 mb-8">Customer Testimonials</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {content.testimonials.map((testimonial: any, index: number) => (
+            <TestimonialCard
+              key={index}
+              quote={testimonial.quote}
+              author={testimonial.author}
+              location={testimonial.location}
+              rating={testimonial.rating}
+            />
+          ))}
         </div>
       </div>
     </div>

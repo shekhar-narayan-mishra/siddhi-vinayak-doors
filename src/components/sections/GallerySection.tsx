@@ -1,134 +1,169 @@
 import React, { useState, useEffect } from 'react';
-import SectionHeader from '../ui/SectionHeader';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-interface Project {
-  image: string;
-  title: string;
-  location: string;
+interface GalleryImage {
+  src: string;
+  alt: string;
 }
 
-const GallerySection: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const projects: Project[] = [
-    {
-      image: "https://images.pexels.com/photos/3626589/pexels-photo-3626589.jpeg",
-      title: "UPV Door Installation",
-      location: "Uttar Pradesh"
-    },
-    {
-      image: "https://images.pexels.com/photos/3255245/pexels-photo-3255245.jpeg",
-      title: "Commercial Complex",
-      location: "Kanpur"
-    },
-    {
-      image: "https://images.pexels.com/photos/6444268/pexels-photo-6444268.jpeg",
-      title: "Residential Project",
-      location: "Varanasi"
-    },
-    {
-      image: "https://images.pexels.com/photos/3555615/pexels-photo-3555615.jpeg",
-      title: "Hotel Windows",
-      location: "Agra"
-    },
-    {
-      image: "https://images.pexels.com/photos/6444159/pexels-photo-6444159.jpeg",
-      title: "Office Building",
-      location: "Prayagraj"
-    },
-    {
-      image: "https://images.pexels.com/photos/8134827/pexels-photo-8134827.jpeg",
-      title: "Shopping Mall",
-      location: "Gorakhpur"
-    }
-  ];
-
-  useEffect(() => {
-    // Preload images to prevent glitches
-    const preloadImages = async () => {
-      try {
-        const promises = projects.map((project) => {
-          return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = project.image;
-            img.onload = resolve;
-            img.onerror = reject;
-          });
-        });
-        
-        await Promise.all(promises);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error preloading images:", error);
-        setIsLoading(false);
-      }
-    };
-    
-    preloadImages();
-  }, []);
+const ImageModal: React.FC<{
+  image: GalleryImage | null;
+  isOpen: boolean;
+  onClose: () => void;
+}> = ({ image, isOpen, onClose }) => {
+  if (!image) return null;
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50" id="gallery-section">
-      <div className="container mx-auto px-4">
-        <SectionHeader
-          title="Our Recent Projects"
-          subtitle="Take a look at some of our recently completed installations across Uttar Pradesh"
-        />
-        
-        {isLoading ? (
-          <div className="flex justify-center items-center h-[60vh]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-          </div>
-        ) : (
-          <div className="relative w-full max-w-6xl mx-auto mt-12">
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={0}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-              }}
-              className="mySwiper"
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ scale: 0.5 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.5 }}
+            className="relative max-w-[90vw] max-h-[90vh]"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={onClose}
+              className="absolute -top-4 -right-4 p-2 bg-white rounded-full shadow-lg"
             >
-              {projects.map((project, index) => (
-                <SwiperSlide key={`project-${index}`}>
-                  <div className="h-[60vh] w-full relative overflow-hidden rounded-lg shadow-lg">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      onError={(e) => {
-                        const img = e.target as HTMLImageElement;
-                        img.src = 'https://images.pexels.com/photos/3626589/pexels-photo-3626589.jpeg';
-                      }}
-                      loading="lazy"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            
-            <div className="flex justify-center mt-8">
-              <Link 
-                to="/gallery" 
-                className="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors duration-300"
-              >
-                View Full Gallery
-              </Link>
-            </div>
-          </div>
-        )}
+              <X className="w-6 h-6" />
+            </button>
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+const NextArrow = ({ onClick }: { onClick?: () => void }) => (
+  <button 
+    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-md"
+    onClick={onClick}
+  >
+    <ChevronRight className="w-6 h-6" />
+  </button>
+);
+
+const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
+  <button 
+    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-md"
+    onClick={onClick}
+  >
+    <ChevronLeft className="w-6 h-6" />
+  </button>
+);
+
+const GallerySection: React.FC = () => {
+  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const galleryImages: GalleryImage[] = [
+      { src: "/images/gallery/image1.png", alt: "Gallery Image 1" },
+      { src: "/images/gallery/image2.png", alt: "Gallery Image 2" },
+      { src: "/images/gallery/image3.jpg", alt: "Gallery Image 3" },
+      { src: "/images/gallery/image4.png", alt: "Gallery Image 4" },
+      { src: "/images/gallery/image5.png", alt: "Gallery Image 5" },
+      { src: "/images/gallery/image6.png", alt: "Gallery Image 6" },
+    ];
+
+    setTimeout(() => {
+      setImages(galleryImages);
+      setLoading(false);
+    }, 800);
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 2 }
+      },
+      {
+        breakpoint: 640,
+        settings: { slidesToShow: 1 }
+      }
+    ]
+  };
+
+  const handleImageClick = (image: GalleryImage) => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
       </div>
-    </section>
+    );
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Gallery</h2>
+        <p className="text-lg text-gray-600">Explore our project gallery</p>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Slider {...settings}>
+          {images.map((image, index) => (
+            <div key={index} className="px-2">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                onClick={() => handleImageClick(image)}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-64 object-cover"
+                />
+              </motion.div>
+            </div>
+          ))}
+        </Slider>
+      </motion.div>
+
+      <ImageModal
+        image={selectedImage}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </div>
   );
 };
 

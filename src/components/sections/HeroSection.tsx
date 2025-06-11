@@ -5,7 +5,8 @@ import CountUp from 'react-countup';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-16">
+    <section className="relative min-h-screen flex items-center">
+      {/* Full viewport image that starts from the top of the page */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.pexels.com/photos/3773571/pexels-photo-3773571.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -15,7 +16,8 @@ const HeroSection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/70"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 py-20">
+      {/* Adjusted content with top padding to account for navbar */}
+      <div className="container mx-auto px-4 relative z-10 py-20 mt-16">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fade-in">
             Elevate Your Space with Premium Doors & Windows

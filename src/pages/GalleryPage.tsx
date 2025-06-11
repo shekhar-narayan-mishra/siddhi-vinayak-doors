@@ -14,21 +14,21 @@ const GalleryPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    // In a real application, you would fetch this from an API or backend
-    // For now, we'll use the placeholder images
+    // Use the actual images from the public/images/gallery folder
     const galleryImages: GalleryImage[] = [
-      { src: "https://images.pexels.com/photos/3626589/pexels-photo-3626589.jpeg", alt: "Gallery Image 1" },
-      { src: "https://images.pexels.com/photos/3255245/pexels-photo-3255245.jpeg", alt: "Gallery Image 2" },
-      { src: "https://images.pexels.com/photos/6444268/pexels-photo-6444268.jpeg", alt: "Gallery Image 3" },
-      { src: "https://images.pexels.com/photos/3555615/pexels-photo-3555615.jpeg", alt: "Gallery Image 4" },
-      { src: "https://images.pexels.com/photos/6444159/pexels-photo-6444159.jpeg", alt: "Gallery Image 5" },
-      { src: "https://images.pexels.com/photos/8134827/pexels-photo-8134827.jpeg", alt: "Gallery Image 6" },
-      { src: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg", alt: "Gallery Image 7" },
-      { src: "https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg", alt: "Gallery Image 8" },
-      { src: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg", alt: "Gallery Image 9" },
-      { src: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg", alt: "Gallery Image 10" },
-      { src: "https://images.pexels.com/photos/2098624/pexels-photo-2098624.jpeg", alt: "Gallery Image 11" },
-      { src: "https://images.pexels.com/photos/4050318/pexels-photo-4050318.jpeg", alt: "Gallery Image 12" },
+      { src: "/images/gallery/image1.png", alt: "Gallery Image 1" },
+      { src: "/images/gallery/image2.png", alt: "Gallery Image 2" },
+      { src: "/images/gallery/image3.jpg", alt: "Gallery Image 3" },
+      { src: "/images/gallery/image4.png", alt: "Gallery Image 4" },
+      { src: "/images/gallery/image5.png", alt: "Gallery Image 5" },
+      { src: "/images/gallery/image6.png", alt: "Gallery Image 6" },
+      // Repeat images to fill the gallery if needed
+      { src: "/images/gallery/image7.png", alt: "Gallery Image 7" },
+      { src: "/images/gallery/image8.png", alt: "Gallery Image 8" },
+      { src: "/images/gallery/image9.jpg", alt: "Gallery Image 9" },
+      { src: "/images/gallery/image10.png", alt: "Gallery Image 10" },
+      { src: "/images/gallery/image5.png", alt: "Gallery Image 11" },
+      { src: "/images/gallery/image6.png", alt: "Gallery Image 12" },
     ];
 
     // Simulate loading
@@ -81,7 +81,7 @@ const GalleryPage: React.FC = () => {
                   loading="lazy"
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
-                    img.src = 'https://images.pexels.com/photos/3626589/pexels-photo-3626589.jpeg';
+                    img.src = '/images/gallery/image1.png'; // Use local fallback image
                   }}
                 />
               </motion.div>
