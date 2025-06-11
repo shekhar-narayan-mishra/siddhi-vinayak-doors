@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface AnnouncementBarProps {
   announcements: string[];
 }
 
 const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ announcements }) => {
-  if (announcements.length === 0) return null;
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible || announcements.length === 0) return null;
 
   return (
-    <div className="bg-accent-500 text-white py-2 overflow-hidden">
+    <div className="bg-accent-500 text-white py-2 overflow-hidden relative">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center">
           <div className="relative overflow-hidden w-full">
@@ -24,6 +26,13 @@ const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ announcements }) => {
           </div>
         </div>
       </div>
+      <button
+        onClick={() => setIsVisible(false)}
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-lg"
+        aria-label="Close Announcement Bar"
+      >
+        &times;
+      </button>
     </div>
   );
 };

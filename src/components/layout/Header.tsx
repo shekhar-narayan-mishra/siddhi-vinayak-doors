@@ -7,17 +7,20 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  
+  // Check if current page is homepage
+  const isHomePage = location.pathname === '/';
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   useEffect(() => {
-    // Initialize isScrolled based on initial scroll position
-    setIsScrolled(window.scrollY > 50);
+    // Check initial scroll position
+    setIsScrolled(window.scrollY > 10);
 
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 10) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -25,14 +28,24 @@ const Header: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
+    // Close mobile menu when route changes
     setIsOpen(false);
-  }, [location]);
+    
+    // Prevent body scroll when mobile menu is open
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [location, isOpen]);
 
   const menuItems = [
     {
@@ -66,164 +79,173 @@ const Header: React.FC = () => {
     { icon: <WhatsAppIcon />, href: "https://wa.me/919336509009", label: "WhatsApp" },
   ];
 
-  // Always use dark text colors since the background is white
-  const textColor = 'text-gray-800';
-  const hoverTextColor = 'hover:text-primary-600';
-  const activeTextColor = 'text-primary-600';
+  // Text color classes based on location and scroll state
+  const textColor = (!isScrolled && isHomePage) ? 'text-white' : 'text-gray-800';
+  const hoverTextColor = (!isScrolled && isHomePage) ? 'hover:text-white/80' : 'hover:text-primary-600';
+  const activeTextColor = (!isScrolled && isHomePage) ? 'text-white' : 'text-primary-600';
+
+  // Add text shadow for better visibility on transparent background
+  const textShadow = (!isScrolled && isHomePage) ? 'text-shadow' : '';
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md py-2"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-20 ${
+        isScrolled 
+          ? 'bg-white/95 backdrop-blur-sm shadow-md' 
+          : isHomePage 
+            ? 'bg-transparent after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/40 after:to-transparent after:z-[-1]' // Transparent with subtle gradient overlay
+            : 'bg-white/90 backdrop-blur-sm' // White background on other pages
+      }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <Link to="/" className="z-10">
-            <Logo variant="dark" />
-          </Link>
+      <div className="container mx-auto px-4 h-full flex items-center justify-between relative z-10">
+        <Link to="/" className="z-10">
+          <Logo variant={(!isScrolled && isHomePage) ? 'light' : 'dark'} />
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {menuItems.map((item, index) => (
-              <div key={index} className="relative group">
-                {item.dropdown ? (
-                  <>
-                    <button className={`flex items-center font-medium ${textColor} ${hoverTextColor} transition-colors`}>
-                      {item.name}
-                      <ChevronDown className={`ml-1 w-4 h-4 ${textColor}`} />
-                    </button>
-                    <div className="absolute left-0 mt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 z-50">
-                      <div className="bg-white rounded-md shadow-lg overflow-hidden">
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-8">
+          {menuItems.map((item, index) => (
+            <div key={index} className="relative group">
+              {item.dropdown ? (
+                <>
+                  <button 
+                    className={`flex items-center font-medium ${textColor} ${hoverTextColor} ${textShadow} transition-colors duration-300`}
+                  >
+                    {item.name}
+                    <ChevronDown className={`ml-1 w-4 h-4 ${textColor} transition-colors duration-300`} />
+                  </button>
+                  <div className="absolute left-0 mt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 z-50">
+                    <div className="bg-white rounded-md shadow-lg overflow-hidden">
+                      {item.items?.map((subItem, subIndex) => (
+                        <Link
+                          key={subIndex}
+                          to={subItem.path}
+                          className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <Link
+                  to={item.path}
+                  className={`font-medium transition-colors duration-300 ${
+                    location.pathname === item.path 
+                      ? activeTextColor
+                      : textColor
+                  } ${hoverTextColor} ${textShadow}`}
+                >
+                  {item.name}
+                </Link>
+              )}
+            </div>
+          ))}
+          
+          {/* Desktop Social Icons */}
+          <div className="flex items-center space-x-4 ml-4">
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`transition-colors duration-300 ${textColor} ${hoverTextColor} ${textShadow}`}
+                aria-label={link.label}
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
+        </nav>
+
+        {/* Mobile menu button */}
+        <button
+          className={`lg:hidden z-20 ${textColor} ${hoverTextColor} ${textShadow} transition-colors duration-300`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </button>
+
+        {/* Mobile Navigation */}
+        <div
+          className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out ${
+            isOpen ? 'translate-x-0' : 'translate-x-full'
+          } lg:hidden`}
+        >
+          <div className="flex flex-col h-full p-6 overflow-y-auto">
+            <div className="flex justify-between items-center mb-8">
+              <Logo />
+              <button onClick={toggleMenu} className="focus:outline-none">
+                <X className="w-6 h-6 text-gray-800" />
+              </button>
+            </div>
+            <nav className="flex flex-col space-y-6">
+              {menuItems.map((item, index) => (
+                <div key={index}>
+                  {item.dropdown ? (
+                    <div className="space-y-4">
+                      <div className="font-medium text-gray-800">{item.name}</div>
+                      <div className="pl-4 space-y-3">
                         {item.items?.map((subItem, subIndex) => (
                           <Link
                             key={subIndex}
                             to={subItem.path}
-                            className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
+                            className="block text-gray-600 hover:text-primary-600"
                           >
                             {subItem.name}
                           </Link>
                         ))}
                       </div>
                     </div>
-                  </>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className={`font-medium transition-colors ${
-                      location.pathname === item.path 
-                        ? activeTextColor
-                        : textColor
-                    } ${hoverTextColor}`}
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-            
-            {/* Desktop Social Icons */}
-            <div className="flex items-center space-x-4 ml-4">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`transition-colors ${textColor} ${hoverTextColor}`}
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-          </nav>
-
-          {/* Mobile Navigation Toggle */}
-          <button
-            className="lg:hidden z-10 focus:outline-none"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <X className={`w-6 h-6 ${textColor}`} />
-            ) : (
-              <Menu className={`w-6 h-6 ${textColor}`} />
-            )}
-          </button>
-
-          {/* Mobile Navigation - Higher z-index to appear above everything */}
-          <div
-            className={`fixed inset-0 bg-white z-[100] transform transition-transform duration-300 ease-in-out ${
-              isOpen ? 'translate-x-0' : 'translate-x-full'
-            } lg:hidden`}
-          >
-            <div className="flex flex-col h-full p-6">
-              <div className="flex justify-between items-center mb-8">
-                <Logo />
-                <button onClick={toggleMenu} className="focus:outline-none">
-                  <X className="w-6 h-6 text-gray-800" />
-                </button>
-              </div>
-              <nav className="flex flex-col space-y-6">
-                {menuItems.map((item, index) => (
-                  <div key={index}>
-                    {item.dropdown ? (
-                      <div className="space-y-4">
-                        <div className="font-medium text-gray-800">{item.name}</div>
-                        <div className="pl-4 space-y-3">
-                          {item.items?.map((subItem, subIndex) => (
-                            <Link
-                              key={subIndex}
-                              to={subItem.path}
-                              className="block text-gray-600 hover:text-primary-600"
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <Link
-                        to={item.path}
-                        className={`font-medium transition-colors ${
-                          location.pathname === item.path
-                            ? 'text-primary-600'
-                            : 'text-gray-800 hover:text-primary-600'
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </nav>
-              
-              {/* Mobile Social Icons */}
-              <div className="mt-8">
-                <h3 className="text-gray-800 font-medium mb-4">Connect With Us</h3>
-                <div className="flex space-x-6">
-                  {socialLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-primary-600 transition-colors"
-                      aria-label={link.label}
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={`font-medium transition-colors ${
+                        location.pathname === item.path
+                          ? 'text-primary-600'
+                          : 'text-gray-800 hover:text-primary-600'
+                      }`}
                     >
-                      {link.icon}
-                    </a>
-                  ))}
+                      {item.name}
+                    </Link>
+                  )}
                 </div>
+              ))}
+            </nav>
+            
+            {/* Mobile Social Icons */}
+            <div className="mt-8">
+              <h3 className="text-gray-800 font-medium mb-4">Connect With Us</h3>
+              <div className="flex space-x-6">
+                {socialLinks.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-primary-600 transition-colors"
+                    aria-label={link.label}
+                  >
+                    {link.icon}
+                  </a>
+                ))}
               </div>
+            </div>
 
-              <div className="mt-auto">
-                <Link
-                  to="/contact"
-                  className="inline-block bg-primary-600 text-white font-medium px-5 py-2 rounded-md hover:bg-primary-700 transition-colors w-full text-center"
-                >
-                  Get a Quote
-                </Link>
-              </div>
+            <div className="mt-auto">
+              <Link
+                to="/contact"
+                className="inline-block bg-primary-600 text-white font-medium px-5 py-2 rounded-md hover:bg-primary-700 transition-colors w-full text-center"
+              >
+                Get a Quote
+              </Link>
             </div>
           </div>
         </div>

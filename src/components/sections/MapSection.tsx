@@ -29,12 +29,12 @@ const MapSection: React.FC = () => {
     { name: "Bareilly", lat: 28.3670, lng: 79.4304, projects: 75 },
     { name: "Aligarh", lat: 27.8974, lng: 78.0880, projects: 70 },
     { name: "Moradabad", lat: 28.8386, lng: 78.7733, projects: 65 },
-    // Adding new locations
     { name: "Raebareli", lat: 26.2345, lng: 81.2396, projects: 45 },
     { name: "Sultanpur", lat: 26.2648, lng: 82.0727, projects: 40 },
     { name: "Faizabad", lat: 26.7732, lng: 82.1442, projects: 55 },
     { name: "Jabalpur", lat: 23.1815, lng: 79.9864, projects: 35 },
-    { name: "Amethi", lat: 26.1542, lng: 81.8142, projects: 30 }
+    { name: "Amethi", lat: 26.1542, lng: 81.8142, projects: 30 },
+    { name: "Pratapgarh", lat: 25.9121, lng: 81.9896, projects: 50 } // Added Pratapgarh
   ];
 
   return (

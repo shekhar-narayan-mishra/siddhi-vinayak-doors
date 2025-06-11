@@ -43,6 +43,11 @@ body {
   line-height: 1.5;
 }
 
+/* Fixed navbar styles */
+body.menu-open {
+  overflow: hidden;
+}
+
 /* Custom animations */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(20px); }
@@ -62,4 +67,9 @@ body {
   animation: marquee 30s linear infinite;
   display: inline-flex;
   width: max-content;
+}
+
+/* Custom classes */
+.text-shadow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
