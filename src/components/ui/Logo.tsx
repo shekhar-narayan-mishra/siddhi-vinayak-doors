@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetPath } from '../../utils/assetPath';
 
 interface LogoProps {
   variant?: 'dark' | 'light';
@@ -9,9 +10,8 @@ const Logo: React.FC<LogoProps> = ({ variant = 'dark' }) => {
 
   return (
     <div className="flex items-center">
-      {/* Use a direct path without baseUrl for local development */}
       <img 
-        src="/images/image.png"
+        src={getAssetPath('/images/image.png')}
         alt="Siddhi Vinayak Logo" 
         className="h-16 w-auto object-contain mr-2"
         onError={(e) => {

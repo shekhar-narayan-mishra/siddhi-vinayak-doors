@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getAssetPath } from '../../utils/assetPath';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -78,12 +79,12 @@ const GallerySection: React.FC = () => {
 
   useEffect(() => {
     const galleryImages: GalleryImage[] = [
-      { src: "/images/gallery/image1.png", alt: "Gallery Image 1" },
-      { src: "/images/gallery/image2.png", alt: "Gallery Image 2" },
-      { src: "/images/gallery/image3.jpg", alt: "Gallery Image 3" },
-      { src: "/images/gallery/image4.png", alt: "Gallery Image 4" },
-      { src: "/images/gallery/image5.png", alt: "Gallery Image 5" },
-      { src: "/images/gallery/image6.png", alt: "Gallery Image 6" },
+      { src: getAssetPath('/images/gallery/image1.png'), alt: "Gallery Image 1" },
+      { src: getAssetPath('/images/gallery/image2.png'), alt: "Gallery Image 2" },
+      { src: getAssetPath('/images/gallery/image3.jpg'), alt: "Gallery Image 3" },
+      { src: getAssetPath('/images/gallery/image4.png'), alt: "Gallery Image 4" },
+      { src: getAssetPath('/images/gallery/image5.png'), alt: "Gallery Image 5" },
+      { src: getAssetPath('/images/gallery/image6.png'), alt: "Gallery Image 6" },
     ];
 
     setTimeout(() => {
