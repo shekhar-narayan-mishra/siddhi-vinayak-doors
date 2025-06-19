@@ -18,17 +18,16 @@ const GalleryPage: React.FC = () => {
     const galleryImages: GalleryImage[] = [
       { src: "/images/gallery/image1.png", alt: "Gallery Image 1" },
       { src: "/images/gallery/image2.png", alt: "Gallery Image 2" },
-      { src: "/images/gallery/image3.jpg", alt: "Gallery Image 3" },
+      { src: "/images/gallery/image3.png", alt: "Gallery Image 3" },
       { src: "/images/gallery/image4.png", alt: "Gallery Image 4" },
       { src: "/images/gallery/image5.png", alt: "Gallery Image 5" },
       { src: "/images/gallery/image6.png", alt: "Gallery Image 6" },
-      // Repeat images to fill the gallery if needed
       { src: "/images/gallery/image7.png", alt: "Gallery Image 7" },
       { src: "/images/gallery/image8.png", alt: "Gallery Image 8" },
-      { src: "/images/gallery/image9.jpg", alt: "Gallery Image 9" },
+      { src: "/images/gallery/image9.png", alt: "Gallery Image 9" },
       { src: "/images/gallery/image10.png", alt: "Gallery Image 10" },
-      { src: "/images/gallery/image5.png", alt: "Gallery Image 11" },
-      { src: "/images/gallery/image6.png", alt: "Gallery Image 12" },
+      { src: "/images/gallery/image11.png", alt: "Gallery Image 11" },
+      { src: "/images/gallery/image12.png", alt: "Gallery Image 12" }
     ];
 
     // Simulate loading
@@ -121,6 +120,7 @@ const GalleryPage: React.FC = () => {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 };

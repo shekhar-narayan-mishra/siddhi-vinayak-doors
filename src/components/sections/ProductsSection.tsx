@@ -8,7 +8,7 @@ const ProductsSection: React.FC = () => {
       id: 1,
       title: 'GI Doors & Windows',
       description: 'Durable and affordable galvanized iron doors and windows for various applications.',
-      image: 'https://images.pexels.com/photos/5490778/pexels-photo-5490778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      image: '/images/gallery/GIcover.png',
       features: [
         'Excellent durability and weather resistance',
         'Cost-effective solutions for various applications',
@@ -21,7 +21,7 @@ const ProductsSection: React.FC = () => {
       id: 2,
       title: 'UPVC Doors & Windows',
       description: 'Energy-efficient UPVC solutions with excellent insulation and soundproofing.',
-      image: 'https://images.pexels.com/photos/6444267/pexels-photo-6444267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      image: '/images/gallery/uPVCCoover.png',
       features: [
         'Superior thermal insulation properties',
         'Excellent soundproofing capabilities',
@@ -34,7 +34,7 @@ const ProductsSection: React.FC = () => {
       id: 3,
       title: 'Aluminium System Windows & Doors',
       description: 'Modern, sleek aluminium systems with superior strength and design flexibility.',
-      image: 'https://images.pexels.com/photos/3016430/pexels-photo-3016430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      image: '/images/gallery/Alluminiumcover.png',
       features: [
         'Contemporary aesthetics with slim profiles',
         'Excellent strength-to-weight ratio',

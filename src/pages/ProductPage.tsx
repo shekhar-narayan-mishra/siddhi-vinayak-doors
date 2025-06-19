@@ -61,7 +61,7 @@ const ProductPage: React.FC = () => {
     'upvc-doors-windows': {
       title: 'UPVC Doors & Windows',
       description: 'Energy-efficient UPVC solutions with excellent insulation and soundproofing capabilities.',
-      mainImage: 'https://images.pexels.com/photos/6444267/pexels-photo-6444267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      mainImage: '/images/gallery/uPVCcover.png',
       features: [
         'Superior thermal insulation properties',
         'Excellent soundproofing capabilities',
