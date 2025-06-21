@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getAssetPath } from '../../utils/assetPath';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -78,18 +79,25 @@ const GallerySection: React.FC = () => {
 
   useEffect(() => {
     const galleryImages: GalleryImage[] = [
-      { src: "/images/gallery/image1.png", alt: "Gallery Image 1" },
-      { src: "/images/gallery/image2.png", alt: "Gallery Image 2" },
-      { src: "/images/gallery/image3.png", alt: "Gallery Image 3" },
-      { src: "/images/gallery/image4.png", alt: "Gallery Image 4" },
-      { src: "/images/gallery/image5.png", alt: "Gallery Image 5" },
-      { src: "/images/gallery/image6.png", alt: "Gallery Image 6" },
-      { src: "/images/gallery/image7.png", alt: "Gallery Image 7" },
-      { src: "/images/gallery/image8.png", alt: "Gallery Image 8" },
-      { src: "/images/gallery/image9.png", alt: "Gallery Image 9" },
-      { src: "/images/gallery/image10.png", alt: "Gallery Image 10" },
-      { src: "/images/gallery/image11.png", alt: "Gallery Image 11" },
-      { src: "/images/gallery/image12.png", alt: "Gallery Image 12" }
+      { src: getAssetPath('/images/gallery/GIcover.png'), alt: "Gallery Image 0" },
+      { src: getAssetPath('/images/gallery/image1.png'), alt: "Gallery Image 1" },
+      { src: getAssetPath('/images/gallery/image2.png'), alt: "Gallery Image 2" },
+      { src: getAssetPath('/images/gallery/image3.png'), alt: "Gallery Image 3" },
+      { src: getAssetPath('/images/gallery/image4.png'), alt: "Gallery Image 4" },
+      { src: getAssetPath('/images/gallery/image5.png'), alt: "Gallery Image 5" },
+      { src: getAssetPath('/images/gallery/image6.png'), alt: "Gallery Image 6" },
+      { src: getAssetPath('/images/gallery/image7.png'), alt: "Gallery Image 7" },
+      { src: getAssetPath('/images/gallery/image8.png'), alt: "Gallery Image 8" },
+      { src: getAssetPath('/images/gallery/image9.png'), alt: "Gallery Image 9" }, // Changed extension to .png
+      { src: getAssetPath('/images/gallery/image10.png'), alt: "Gallery Image 10" },
+      { src: getAssetPath('/images/gallery/image11.png'), alt: "Gallery Image 11" },
+      { src: getAssetPath('/images/gallery/image12.png'), alt: "Gallery Image 12" },
+      { src: getAssetPath('/images/gallery/image13.png'), alt: "Gallery Image 13" },
+      { src: getAssetPath('/images/gallery/image14.png'), alt: "Gallery Image 14" },
+      { src: getAssetPath('/images/gallery/image15.png'), alt: "Gallery Image 15" },
+      { src: getAssetPath('/images/gallery/image16.png'), alt: "Gallery Image 16" },
+      { src: getAssetPath('/images/gallery/image17.png'), alt: "Gallery Image 17" }
+
     ];
 
     setTimeout(() => {
@@ -97,6 +105,11 @@ const GallerySection: React.FC = () => {
       setLoading(false);
     }, 800);
   }, []);
+
+  // Add image error handling function
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = getAssetPath('/images/fallback-image.png'); // Add a fallback image
+  };
 
   const settings = {
     dots: true,
@@ -137,7 +150,7 @@ const GallerySection: React.FC = () => {
     <div className="container mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Gallery</h2>
-        <p className="text-lg text-gray-600">Explore our project gallery</p>
+        <p className="text-lg text-gray-600">Explore our gallery where expert craftsmanship meets flawless finishing</p>
       </div>
 
       <motion.div
@@ -156,7 +169,10 @@ const GallerySection: React.FC = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
+                  onError={handleImageError}
+                  loading="lazy"
                   className="w-full h-64 object-cover"
+                  draggable="false"
                 />
               </motion.div>
             </div>

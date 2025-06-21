@@ -11,7 +11,7 @@ const ProductPage: React.FC = () => {
     'gi-doors-windows': {
       title: 'GI Doors & Windows',
       description: 'Durable and cost-effective galvanized iron doors and windows for various applications.',
-      mainImage: 'https://images.pexels.com/photos/5490778/pexels-photo-5490778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      mainImage: '/images/gallery/Topcover.png',
       features: [
         'Excellent durability and weather resistance',
         'Cost-effective solutions for various applications',
@@ -36,11 +36,6 @@ const ProductPage: React.FC = () => {
           name: 'Premium GI Windows',
           image: 'https://images.pexels.com/photos/3255245/pexels-photo-3255245.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
           description: 'Premium GI windows offer enhanced aesthetics and functionality.'
-        },
-        {
-          name: 'Industrial GI Solutions',
-          image: 'https://images.pexels.com/photos/6444268/pexels-photo-6444268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          description: 'Heavy-duty GI doors and windows for industrial applications.'
         }
       ],
       testimonials: [
@@ -61,7 +56,7 @@ const ProductPage: React.FC = () => {
     'upvc-doors-windows': {
       title: 'UPVC Doors & Windows',
       description: 'Energy-efficient UPVC solutions with excellent insulation and soundproofing capabilities.',
-      mainImage: '/images/gallery/uPVCcover.png',
+      mainImage: '/images/gallery/Topcover.png',
       features: [
         'Superior thermal insulation properties',
         'Excellent soundproofing capabilities',
@@ -111,7 +106,7 @@ const ProductPage: React.FC = () => {
     'aluminium-system': {
       title: 'Aluminium System Windows & Doors',
       description: 'Modern, sleek aluminium systems with superior strength and design flexibility.',
-      mainImage: 'https://images.pexels.com/photos/3016430/pexels-photo-3016430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      mainImage: '/images/gallery/Topcover.png',
       features: [
         'Contemporary aesthetics with slim profiles',
         'Excellent strength-to-weight ratio',

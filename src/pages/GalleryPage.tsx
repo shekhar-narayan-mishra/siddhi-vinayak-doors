@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Masonry from 'react-masonry-css';
 import { motion } from 'framer-motion';
+import { getAssetPath } from '../utils/assetPath';
 import Footer from '../components/layout/Footer';
 
 interface GalleryImage {
@@ -14,20 +15,26 @@ const GalleryPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    // Use the actual images from the public/images/gallery folder
+    // Use the getAssetPath function for all image paths
     const galleryImages: GalleryImage[] = [
-      { src: "/images/gallery/image1.png", alt: "Gallery Image 1" },
-      { src: "/images/gallery/image2.png", alt: "Gallery Image 2" },
-      { src: "/images/gallery/image3.png", alt: "Gallery Image 3" },
-      { src: "/images/gallery/image4.png", alt: "Gallery Image 4" },
-      { src: "/images/gallery/image5.png", alt: "Gallery Image 5" },
-      { src: "/images/gallery/image6.png", alt: "Gallery Image 6" },
-      { src: "/images/gallery/image7.png", alt: "Gallery Image 7" },
-      { src: "/images/gallery/image8.png", alt: "Gallery Image 8" },
-      { src: "/images/gallery/image9.png", alt: "Gallery Image 9" },
-      { src: "/images/gallery/image10.png", alt: "Gallery Image 10" },
-      { src: "/images/gallery/image11.png", alt: "Gallery Image 11" },
-      { src: "/images/gallery/image12.png", alt: "Gallery Image 12" }
+      { src: getAssetPath('/images/gallery/GIcover.png'), alt: "Gallery Image 0" },
+      { src: getAssetPath('/images/gallery/image1.png'), alt: "Gallery Image 1" },
+      { src: getAssetPath('/images/gallery/image2.png'), alt: "Gallery Image 2" },
+      { src: getAssetPath('/images/gallery/image3.png'), alt: "Gallery Image 3" },
+      { src: getAssetPath('/images/gallery/image4.png'), alt: "Gallery Image 4" },
+      { src: getAssetPath('/images/gallery/image5.png'), alt: "Gallery Image 5" },
+      { src: getAssetPath('/images/gallery/image6.png'), alt: "Gallery Image 6" },
+      { src: getAssetPath('/images/gallery/image7.png'), alt: "Gallery Image 7" },
+      { src: getAssetPath('/images/gallery/image8.png'), alt: "Gallery Image 8" },
+      { src: getAssetPath('/images/gallery/image9.jpg'), alt: "Gallery Image 9" },
+      { src: getAssetPath('/images/gallery/image10.png'), alt: "Gallery Image 10" },
+      { src: getAssetPath('/images/gallery/image11.png'), alt: "Gallery Image 11" },
+      { src: getAssetPath('/images/gallery/image12.png'), alt: "Gallery Image 12" },
+      { src: getAssetPath('/images/gallery/image13.png'), alt: "Gallery Image 13" },
+      { src: getAssetPath('/images/gallery/image14.png'), alt: "Gallery Image 14" },
+      { src: getAssetPath('/images/gallery/image15.png'), alt: "Gallery Image 15" },
+      { src: getAssetPath('/images/gallery/image16.png'), alt: "Gallery Image 16" },
+      { src: getAssetPath('/images/gallery/image17.png'), alt: "Gallery Image 17" },
     ];
 
     // Simulate loading
@@ -80,7 +87,7 @@ const GalleryPage: React.FC = () => {
                   loading="lazy"
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
-                    img.src = '/images/gallery/image1.png'; // Use local fallback image
+                    img.src = getAssetPath('/images/gallery/image1.png'); // Use local fallback image
                   }}
                 />
               </motion.div>

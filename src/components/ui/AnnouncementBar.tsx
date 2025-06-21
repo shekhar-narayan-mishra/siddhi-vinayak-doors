@@ -17,7 +17,7 @@ const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ announcements }) => {
             <div className="whitespace-nowrap overflow-hidden text-center">
               <div className="animate-marquee inline-block">
                 {[...announcements, ...announcements].map((announcement, index) => (
-                  <span key={index} className="inline-block mx-8 text-sm md:text-base">
+                  <span key={index} className="inline-block mx-12 text-sm md:text-base">
                     {announcement}
                   </span>
                 ))}

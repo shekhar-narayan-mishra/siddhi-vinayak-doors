@@ -59,12 +59,16 @@ body.menu-open {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 20s linear infinite;
   display: inline-flex;
   width: max-content;
 }
@@ -72,4 +76,13 @@ body.menu-open {
 /* Custom classes */
 .text-shadow {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+@layer components {
+  .nav-link {
+    @apply text-secondary-700 transition-colors duration-200;
+  }
+  .nav-link:hover {
+    @apply text-accent-500;
+  }
 }
