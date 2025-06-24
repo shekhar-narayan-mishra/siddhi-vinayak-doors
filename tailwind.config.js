@@ -46,7 +46,26 @@ export default {
       },
       boxShadow: {
         'custom': '0 4px 20px rgba(0, 0, 0, 0.08)',
-      }
+      },
+      animation: {
+        marquee: 'marquee 15s linear infinite',
+        slowMarquee: 'marquee 45s linear infinite', // Much slower animation for the announcement bar
+        ticker: 'ticker 25s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        slowMarquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        ticker: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
+      },
     },
   },
   plugins: [],

@@ -13,7 +13,7 @@ const Logo: React.FC<LogoProps> = ({ variant = 'dark' }) => {
       <img 
         src={getAssetPath('/images/image.png')}
         alt="Siddhi Vinayak Logo" 
-        className="h-16 w-auto object-contain mr-2"
+        className="h-12 md:h-16 w-auto object-contain mr-2"
         onError={(e) => {
           console.error('Logo failed to load:', e);
           // Fallback for when image doesn't load
@@ -21,10 +21,10 @@ const Logo: React.FC<LogoProps> = ({ variant = 'dark' }) => {
         }}
       />
       <div className="flex flex-col justify-center">
-        <span className={`block text-2xl font-bold leading-none tracking-tight ${textColor}`}>
+        <span className={`block text-xl md:text-2xl font-bold leading-none tracking-tight ${textColor}`}>
           SIDDHI VINAYAK
         </span>
-        <span className={`block text-base font-medium leading-tight mt-0.5 ${textColor}`}>
+        <span className={`block text-sm md:text-base font-medium leading-tight mt-0.5 ${textColor}`}>
           DOORS & WINDOWS
         </span>
       </div>
