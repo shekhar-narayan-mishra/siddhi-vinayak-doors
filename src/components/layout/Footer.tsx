@@ -15,21 +15,27 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4 mt-6">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61578325280737"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gray-800 hover:bg-primary-600 transition-colors p-2 rounded-full"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/siddhivinayakdoorwindows/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gray-800 hover:bg-primary-600 transition-colors p-2 rounded-full"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/siddhi-vinayak-doors-and-windows/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gray-800 hover:bg-primary-600 transition-colors p-2 rounded-full"
                 aria-label="LinkedIn"
               >
@@ -103,7 +109,7 @@ const Footer: React.FC = () => {
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 text-primary-400 mt-1 mr-3 flex-shrink-0" />
                 <span className="text-gray-400">
-                  123 Business Street, Lucknow, Uttar Pradesh, India - 226001
+                  Siddhi Vinayak Enterorises , Raiput Tiyai , Lalganj ,Pratapgarh
                 </span>
               </li>
               <li className="flex items-center">
@@ -112,7 +118,7 @@ const Footer: React.FC = () => {
                   href="tel:+919876543210"
                   className="text-gray-400 hover:text-primary-300 transition-colors"
                 >
-                  +91 98765 43210
+                  +91 9005109009 , 9336509009
                 </a>
               </li>
               <li className="flex items-center">
@@ -121,15 +127,14 @@ const Footer: React.FC = () => {
                   href="mailto:info@siddhivinayak.com"
                   className="text-gray-400 hover:text-primary-300 transition-colors"
                 >
-                  info@siddhivinayak.com
+                  siddhivinyakconnect@gmail.com
                 </a>
               </li>
               <li className="flex items-start">
                 <Clock className="w-5 h-5 text-primary-400 mt-1 mr-3 flex-shrink-0" />
                 <span className="text-gray-400">
-                  Monday - Saturday: 9:00 AM - 7:00 PM
+                  Everyday 8:00 AM - 9:00 PM
                   <br />
-                  Sunday: Closed
                 </span>
               </li>
             </ul>

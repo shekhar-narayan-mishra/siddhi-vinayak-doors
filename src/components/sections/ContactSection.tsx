@@ -8,25 +8,25 @@ const ContactSection: React.FC = () => {
     {
       icon: <Phone className="w-6 h-6 text-primary-600" />,
       title: 'Phone',
-      details: '+91 9336509009',
-      link: 'tel:+919876543210',
+      details: '9005109009,9336509009',
+      link: 'tel:+919005109009',
     },
     {
       icon: <Mail className="w-6 h-6 text-primary-600" />,
       title: 'Email',
-      details: 'info@siddhivinayak.com',
+      details: 'siddhivinayakconnect@gmail.com',
       link: 'mailto:info@siddhivinayak.com',
     },
     {
       icon: <MapPin className="w-6 h-6 text-primary-600" />,
       title: 'Location',
       details: 'Siddhi Vinayak Enterprises',
-      link: 'https://maps.google.com',
+      link: 'https://www.google.com/maps/place/Siddhi+Vinayak+Enterprises/@25.9496015,81.6345282,17z/data=!3m1!4b1!4m6!3m5!1s0x399ae5bc859ada55:0xbfa0acca80faf792!8m2!3d25.9495968!4d81.6393991!16s%2Fg%2F11h6f68r9s?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D',
     },
     {
       icon: <Clock className="w-6 h-6 text-primary-600" />,
       title: 'Business Hours',
-      details: 'Mon-Sat: 9AM-7PM | Sun: Closed',
+      details: 'Everyday 8:00 AM - 9:00 PM',
     },
   ];
 

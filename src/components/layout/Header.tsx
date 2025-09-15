@@ -76,10 +76,10 @@ const Header: React.FC = () => {
   );
 
   const socialLinks = [
-    { icon: <Facebook className="w-5 h-5" />, href: "https://facebook.com", label: "Facebook" },
-    { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com", label: "Instagram" },
-    { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: <WhatsAppIcon />, href: "https://wa.me/919336509009", label: "WhatsApp" },
+    { icon: <Facebook className="w-5 h-5" />, href: "https://www.facebook.com/profile.php?id=61578325280737", label: "Facebook", target: "_blank", rel: "noopener noreferrer" },
+    { icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/siddhivinayakdoorwindows/", label: "Instagram", target: "_blank", rel: "noopener noreferrer" },
+    { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/company/siddhi-vinayak-doors-and-windows/?viewAsMember=true", label: "LinkedIn", target: "_blank", rel: "noopener noreferrer" },
+    { icon: <WhatsAppIcon />, href: "https://wa.me/919336509009", label: "WhatsApp", target: "_blank", rel: "noopener noreferrer" },
   ];
   
   // Text color classes based on location and scroll state
@@ -152,8 +152,8 @@ const Header: React.FC = () => {
                 <a
                   key={index}
                   href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={link.target}
+                  rel={link.rel}
                   className={`transition-colors duration-300 ${textColor} ${hoverTextColor} ${textShadow}`}
                   aria-label={link.label}
                 >
@@ -248,8 +248,8 @@ const Header: React.FC = () => {
                     <a
                       key={index}
                       href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={link.target}
+                      rel={link.rel}
                       className="text-gray-600 hover:text-primary-600 transition-colors"
                       aria-label={link.label}
                     >

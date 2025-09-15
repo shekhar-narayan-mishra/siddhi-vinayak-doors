@@ -28,13 +28,13 @@ const ProductPage: React.FC = () => {
       ],
       variants: [
         {
-          name: 'Standard GI Doors',
-          image: 'https://images.pexels.com/photos/3626589/pexels-photo-3626589.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'GI Doors Frames',
+          image: '/images/gallery/gidoorframe.png',
           description: 'Our standard GI doors are designed for everyday use in various settings.'
         },
         {
-          name: 'Premium GI Windows',
-          image: 'https://images.pexels.com/photos/3255245/pexels-photo-3255245.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'GI Windows With Grill',
+          image: '/images/gallery/giwindowframe.png',
           description: 'Premium GI windows offer enhanced aesthetics and functionality.'
         }
       ],
@@ -74,17 +74,17 @@ const ProductPage: React.FC = () => {
       variants: [
         {
           name: 'Sliding UPVC Windows',
-          image: 'https://images.pexels.com/photos/3555615/pexels-photo-3555615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          image: '/images/gallery/upvcslider.png',
           description: 'Space-saving sliding windows with smooth operation.'
         },
         {
           name: 'Casement UPVC Windows',
-          image: 'https://images.pexels.com/photos/6444159/pexels-photo-6444159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          image: '/images/gallery/upvccasement.png',
           description: 'Outward opening windows for maximum ventilation.'
         },
         {
           name: 'UPVC French Doors',
-          image: 'https://images.pexels.com/photos/8134827/pexels-photo-8134827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          image: '/images/gallery/frenchdoor2.png',
           description: 'Elegant double doors that open from the center.'
         }
       ],
@@ -124,18 +124,18 @@ const ProductPage: React.FC = () => {
       variants: [
         {
           name: 'Aluminium Sliding Doors',
-          image: 'https://images.pexels.com/photos/3773571/pexels-photo-3773571.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+          image: 'images/gallery/alluminiumslidingdoor1.png',
           description: 'Space-efficient doors that slide along tracks.'
         },
         {
-          name: 'Aluminium Bifold Doors',
-          image: 'https://images.pexels.com/photos/5870033/pexels-photo-5870033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Aluminium Openable Doors',
+          image: 'images/gallery/alluminiumopenable.png',
           description: 'Concertina-style folding doors for maximum opening.'
         },
         {
-          name: 'Aluminium Curtain Walls',
-          image: 'https://images.pexels.com/photos/2119713/pexels-photo-2119713.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          description: 'Glass facades for commercial buildings and offices.'
+          name: 'Aluminium Slide and Fold',
+          image: 'images/gallery/slideandfold.png',
+          description: 'For Better Space Utilisation and Aesthetic Appeal.'
         }
       ],
       testimonials: [

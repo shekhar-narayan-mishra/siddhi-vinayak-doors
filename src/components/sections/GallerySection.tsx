@@ -79,12 +79,13 @@ const GallerySection: React.FC = () => {
 
   useEffect(() => {
     const galleryImages: GalleryImage[] = [
+      { src: getAssetPath('/images/gallery/img23.png'), alt: "Gallery Image 23" },
+      { src: getAssetPath('/images/gallery/img27.png'), alt: "Gallery Image 27" },
       { src: getAssetPath('/images/gallery/GIcover.png'), alt: "Gallery Image 0" },
       { src: getAssetPath('/images/gallery/image1.png'), alt: "Gallery Image 1" },
       { src: getAssetPath('/images/gallery/image2.png'), alt: "Gallery Image 2" },
       { src: getAssetPath('/images/gallery/image3.png'), alt: "Gallery Image 3" },
       { src: getAssetPath('/images/gallery/image4.png'), alt: "Gallery Image 4" },
-      { src: getAssetPath('/images/gallery/image5.png'), alt: "Gallery Image 5" },
       { src: getAssetPath('/images/gallery/image6.png'), alt: "Gallery Image 6" },
       { src: getAssetPath('/images/gallery/image7.png'), alt: "Gallery Image 7" },
       { src: getAssetPath('/images/gallery/image8.png'), alt: "Gallery Image 8" },
@@ -94,9 +95,12 @@ const GallerySection: React.FC = () => {
       { src: getAssetPath('/images/gallery/image12.png'), alt: "Gallery Image 12" },
       { src: getAssetPath('/images/gallery/image13.png'), alt: "Gallery Image 13" },
       { src: getAssetPath('/images/gallery/image14.png'), alt: "Gallery Image 14" },
+      { src: getAssetPath('/images/gallery/img19.png'), alt: "Gallery Image 19" },
+      { src: getAssetPath('/images/gallery/img20.png'), alt: "Gallery Image 20" },
       { src: getAssetPath('/images/gallery/image15.png'), alt: "Gallery Image 15" },
-      { src: getAssetPath('/images/gallery/image16.png'), alt: "Gallery Image 16" },
-      { src: getAssetPath('/images/gallery/image17.png'), alt: "Gallery Image 17" }
+      { src: getAssetPath('/images/gallery/img18.png'), alt: "Gallery Image 18" },
+      { src: getAssetPath('/images/gallery/img28.png'), alt: "Gallery Image 28" },
+      { src: getAssetPath('/images/gallery/image29.png'), alt: "Gallery Image 29" },
 
     ];
 

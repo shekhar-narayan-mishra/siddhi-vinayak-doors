@@ -6,7 +6,7 @@ const ProductsSection: React.FC = () => {
   const products = [
     {
       id: 1,
-      title: 'GI Doors & Windows',
+      title: 'GI Doors & Windows Frames',
       description: 'Durable and affordable galvanized iron doors and windows for various applications.',
       image: '/images/gallery/GIcover.png',
       features: [
@@ -32,9 +32,9 @@ const ProductsSection: React.FC = () => {
     },
     {
       id: 3,
-      title: 'Aluminium System Windows & Doors',
+      title: 'Aluminium Slim Profile & System Windows & Doors',
       description: 'Modern, sleek aluminium systems with superior strength and design flexibility.',
-      image: '/images/gallery/Alluminiumcover.png',
+      image: '/images/gallery/Alluminiumcover1.png',
       features: [
         'Contemporary aesthetics with slim profiles',
         'Excellent strength-to-weight ratio',

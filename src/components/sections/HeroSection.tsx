@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
       {/* Full viewport image that starts from the top of the page */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.pexels.com/photos/3773571/pexels-photo-3773571.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="/images/gallery/Coverimg.png"
           alt="Modern home interior"
           className="w-full h-full object-cover"
         />

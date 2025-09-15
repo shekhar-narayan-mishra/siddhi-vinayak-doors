@@ -17,6 +17,13 @@ const GalleryPage: React.FC = () => {
   useEffect(() => {
     // Use the getAssetPath function for all image paths
     const galleryImages: GalleryImage[] = [
+      { src: getAssetPath('/images/gallery/img19.png'), alt: "Gallery Image 19" },
+      { src: getAssetPath('/images/gallery/img20.png'), alt: "Gallery Image 20" },
+      { src: getAssetPath('/images/gallery/img22.png'), alt: "Gallery Image 22" },
+      { src: getAssetPath('/images/gallery/img23.png'), alt: "Gallery Image 23" },
+      { src: getAssetPath('/images/gallery/img24.png'), alt: "Gallery Image 24" } ,
+      {src: getAssetPath('/images/gallery/img25.png'), alt: "Gallery Image 25" },
+      { src: getAssetPath('/images/gallery/image29.png'), alt: "Gallery Image 29" },
       { src: getAssetPath('/images/gallery/GIcover.png'), alt: "Gallery Image 0" },
       { src: getAssetPath('/images/gallery/image1.png'), alt: "Gallery Image 1" },
       { src: getAssetPath('/images/gallery/image2.png'), alt: "Gallery Image 2" },
@@ -35,6 +42,11 @@ const GalleryPage: React.FC = () => {
       { src: getAssetPath('/images/gallery/image15.png'), alt: "Gallery Image 15" },
       { src: getAssetPath('/images/gallery/image16.png'), alt: "Gallery Image 16" },
       { src: getAssetPath('/images/gallery/image17.png'), alt: "Gallery Image 17" },
+      { src: getAssetPath('/images/gallery/img18.png'), alt: "Gallery Image 18" },//shuffled
+      {src: getAssetPath('/images/gallery/img26.png'), alt: "Gallery Image 26" },
+      {src: getAssetPath('/images/gallery/img27.png'), alt: "Gallery Image 27" },
+      
+
     ];
 
     // Simulate loading
