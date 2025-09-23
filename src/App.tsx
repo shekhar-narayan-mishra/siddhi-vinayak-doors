@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/react";
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
@@ -35,6 +36,7 @@ function App() {
           </Routes>
         </MainContent>
         <Footer />
+        <Analytics />
       </div>
     </Router>
   );
