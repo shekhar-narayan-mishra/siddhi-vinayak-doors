@@ -9,7 +9,7 @@ const ProductPage: React.FC = () => {
   // Product data based on category
   const productData: Record<string, any> = {
     'gi-doors-windows': {
-      title: 'GI Doors & Windows',
+      title: 'GI Doors & Windows (Japani Chaukhat)',
       description: 'Durable and cost-effective galvanized iron doors and windows for various applications.',
       mainImage: '/images/gallery/Topcover.png',
       features: [

@@ -6,7 +6,7 @@ const ProductsSection: React.FC = () => {
   const products = [
     {
       id: 1,
-      title: 'GI Doors & Windows Frames',
+      title: 'GI Doors & Windows Frames    (japani Chaukhat)',
       description: 'Durable and affordable galvanized iron doors and windows for various applications.',
       image: '/images/gallery/GIcover.png',
       features: [
